@@ -9,7 +9,6 @@ public class ServerOutputListener extends Thread{
 
     ServerConnection connection;
     TextUtils t = new TextUtils();
-    boolean kill = false;
 
     public ServerOutputListener(ServerConnection connection) {
         this.connection = connection;
@@ -17,7 +16,7 @@ public class ServerOutputListener extends Thread{
 
     @Override
     public void run() {
-        while (!kill) {
+        while (true) {
             String serverOutput = "";
             try {
                 serverOutput = connection.reader.readLine();
@@ -25,8 +24,8 @@ public class ServerOutputListener extends Thread{
                 e.printStackTrace();
             }
             if (connection.clientGUI != null) {
-                String clientChatText = connection.clientGUI.chatText.getText() + serverOutput + "\n";
-                clientChatText = t.addTimeStamp(clientChatText);
+                String clientChatText = connection.clientGUI.chatText.getText() + serverOutput;
+                clientChatText = t.addTimeStamp(clientChatText)+ "\n";
                 connection.clientGUI.chatText.setText(clientChatText);
             }
         }

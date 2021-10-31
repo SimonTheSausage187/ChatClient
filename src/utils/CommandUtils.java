@@ -3,7 +3,6 @@ package utils;
 
 import connectionHandlers.ServerConnection;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CommandUtils {
@@ -26,9 +25,7 @@ public class CommandUtils {
         return out;
     }
 
-
-
-/* TODO Command List: quit/logoff,   rbf: speed, active,    DB-Commands: create user, delete user, change user*/
+    //TODO missing commands: list command, rgb commands, /help
 
     public void callCommand(String s) {
         String[] tokens = s.substring(1, s.length()).split(" ");
@@ -49,6 +46,8 @@ public class CommandUtils {
             databaseCommands(args);
         } else if(cmd.equalsIgnoreCase("whoami")) {
             connection.writer.println("whoami");
+        }else if(cmd.equals("list")){
+
         }else {
             connection.clientGUI.commandErrorMessage("This is no valid command. Type /help in order to get a list of all commands");
         }
@@ -102,10 +101,8 @@ public class CommandUtils {
 
     private String changeGroup(String[] args) {
         if (args[2].equalsIgnoreCase("name")) {
-            //TODO Change Group name
             return "group change name " + args[3] + " " + args[4];
         } else if (args[2].equalsIgnoreCase("members")) {
-            //TODO Change group members
             String out = "";
             for (int i = 0; i < args.length; i++) {
                 out += (args[i] + " ");

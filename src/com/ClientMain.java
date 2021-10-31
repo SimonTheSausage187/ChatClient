@@ -1,6 +1,7 @@
 package com;
 
 import clientGUI.ClientGUIFrame;
+import clientGUI.InfoPane;
 import clientGUI.LoginGUIFrame;
 import clientGUI.StartPageGUIFrame;
 import connectionHandlers.ServerConnection;

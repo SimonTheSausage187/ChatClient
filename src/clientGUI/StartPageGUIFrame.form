@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="6" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="2" vgap="2">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="791" height="400"/>
+      <xy x="20" y="20" width="812" height="400"/>
     </constraints>
     <properties>
       <background color="-15852764"/>
@@ -65,7 +65,7 @@
         <properties>
           <font name="HoloLens MDL2 Assets" size="18" style="1"/>
           <foreground color="-1"/>
-          <text value="Welcome to FotzApp! Down below you can learn how to properly use our Client"/>
+          <text value="Welcome to our ChatClient! Down below you can learn how to properly use it"/>
         </properties>
       </component>
       <component id="715f3" class="javax.swing.JTextPane" binding="infoText">

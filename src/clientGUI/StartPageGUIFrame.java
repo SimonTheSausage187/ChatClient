@@ -27,7 +27,7 @@ public class StartPageGUIFrame extends JFrame {
         this.serverConnection = serverConnection;
 
         mainPanel.setBorder(new EmptyBorder(10, 20, 20, 20));
-        infoText.setText("<Hier wird bald eine Dokumentation der Commands auftauchen> \n xuewrhajhsdgflkajdsrhfb  \n gjkhgkuzggk\nilzgtiulkuilziulhzoihjfdogihjfuiodhzudfhdgouisdhf\nuiwsrtfhgliouhdrgilushderkglliudyfhgdslriugh\n7346583745639847563948576");
+        infoText.setText("<Hier wird bald eine Dokumentation der Commands auftauchen>");
 
         this.setUndecorated(true);
         setTitle("Start Page");

@@ -3,42 +3,46 @@ package clientGUI;
 import com.ClientMain;
 import connectionHandlers.ServerConnection;
 import listeners.ServerOutputListener;
+import utils.SizeCorrection;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ClientGUIFrame extends JFrame{
 
-    private JTextField userInputText;
+    public JTextField userInputText;
     private JButton buttonSend;
-    private JPanel mainPanel;
+    public JPanel mainPanel;
 
-    public JTextPane chatText;
+    public JEditorPane chatText;
     private JScrollPane scroll;
 
     public ClientGUIFrame(ServerConnection connection, ClientMain clientMain) {
-        setLayout(new GridLayout(1, 1));
-        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
         ServerOutputListener serverOutputListener = new ServerOutputListener(connection);
         serverOutputListener.start();
+        SizeCorrection sizeCorrection = new SizeCorrection(this);
 
         chatText.setText(chatText.getText() + "\n");
-        chatText.setAutoscrolls(true);
 
+        sizeCorrection.start();
+
+        setResizable(true);
         setContentPane(mainPanel);
-        setTitle("FotzApp v1.0.0");
+        setTitle("ChatClient v1.0.0");
         setSize(1600, 900);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        chatText.setMaximumSize(chatText.getSize());
         setVisible(true);
         buttonSend.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                clientMain.process(userInputText.getText());
-                chatText.setText(chatText.getText() + userInputText.getText() +"\n");
-                userInputText.setText("");
+                if (userInputText.getText().length() > 0) {
+                    clientMain.process(userInputText.getText());
+                    chatText.setText(chatText.getText() + "You: " + userInputText.getText() + "\n");
+                    userInputText.setText("");
+                }
             }
         });
     }
@@ -46,7 +50,4 @@ public class ClientGUIFrame extends JFrame{
         JOptionPane.showMessageDialog(ClientGUIFrame.this, errorMessage, "Something went wrong...", JOptionPane.ERROR_MESSAGE);
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
 }

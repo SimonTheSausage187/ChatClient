@@ -22,7 +22,7 @@ public class LoginGUIFrame extends JFrame{
         this.connection = connection;
 
         setContentPane(mainPanel);
-        setTitle("Start Page");
+        setTitle("Login");
         setSize(800, 480);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
